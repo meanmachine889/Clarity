@@ -109,7 +109,7 @@ const UploadDropZone = () =>{
 
                         {loading ? (
                             <div className='w-full mt-4 max-w-xs mx-auto'>
-                                <Progress value={uProgress} className='h-1 w-full'/>
+                                <Progress indicatorColor={uProgress === 100 ? 'bg-green-400': ''} value={uProgress} className='h-1 w-full'/>
                                 {uProgress === 100 ? (
                                     <div className='flex gap-1 items-center justify-center text-sm text-center pt-2'>
                                         <Loader2 className='h-3 w-3 animate-spin'/>

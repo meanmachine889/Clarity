@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useState } from "react";
+import React, { useState, useContext } from "react";
 import UploadButton from "./uploadButton";
 import { trpc } from "@/app/_trpc/client";
 import {
@@ -112,7 +112,7 @@ const Dashboard = () => {
           <div className="mt-16 flex flex-col items-center gap-2">
             <Ghost className="h-8 w-8 text-orange-400" />
             <h3 className="font-semibold text-xl">Looks quite empty</h3>
-            <p>Let's upload your first pdf</p>
+            <p>Let&apos;s upload your first pdf</p>
           </div>
         )}
       </div>
