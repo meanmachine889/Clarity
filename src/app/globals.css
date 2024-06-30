@@ -66,21 +66,44 @@
     font-style: normal;
   }
 
-  scrollbar-w-2::-webkit-scrollbar {
+  .scrollbar-w-2 {
+    scrollbar-width: thin; /* For Firefox */
+  }
+  
+  .scrollbar-w-2::-webkit-scrollbar {
     width: 0.25rem;
     height: 0.25rem;
   }
   
   .scrollbar-track-orange-lighter::-webkit-scrollbar-track {
-    --bg-opacity: 0.5;
-    background-color: #00000015;
+    background-color: rgba(0, 0, 0, 0.5); /* Adjusted for clarity */
   }
   
   .scrollbar-thumb-orange::-webkit-scrollbar-thumb {
-    --bg-opacity: 0.5;
-    background-color: #13131374;
+    background-color: rgba(19, 19, 19, 0.5); /* Adjusted for clarity */
   }
   
   .scrollbar-thumb-rounded::-webkit-scrollbar-thumb {
     border-radius: 7px;
   }
+  
+  @keyframes gradientAnimation {
+    0% {
+      background-position: 0% 50%;
+    }
+    50% {
+      background-position: 100% 50%;
+    }
+    100% {
+      background-position: 0% 50%;
+    }
+  }
+  
+  .animated-gradient-text {
+    background: linear-gradient(270deg, #FFEDD5, #F97316); /* From orange-100 to orange-500 */
+    background-size: 400% 400%;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    animation: gradientAnimation 4s ease infinite;
+  }
+  

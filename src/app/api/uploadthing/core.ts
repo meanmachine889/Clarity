@@ -1,7 +1,6 @@
 import { db } from "@/db";
 import { getKindeServerSession } from "@kinde-oss/kinde-auth-nextjs/server";
 import { createUploadthing, type FileRouter } from "uploadthing/next";
-import { UploadThingError } from "uploadthing/server";
 import { PDFLoader } from "@langchain/community/document_loaders/fs/pdf";
 import { GoogleGenerativeAI } from "@google/generative-ai";
 
@@ -34,6 +33,9 @@ export const ourFileRouter = {
         const blob = await response.blob();
         const loader = new PDFLoader(blob);
         const pageLevelDocs = await loader.load();
+        
+        // Log loaded PDF content for verification
+        console.log("Loaded PDF content: ", pageLevelDocs);
 
         // Vectorizing PDF with Gemini
         const genAI = new GoogleGenerativeAI(
@@ -48,6 +50,7 @@ export const ourFileRouter = {
             metadata: {
               page: index + 1,
               fileId: createdfile.id,
+              pageContent: doc.pageContent, // Add page content to metadata
             },
           };
         });

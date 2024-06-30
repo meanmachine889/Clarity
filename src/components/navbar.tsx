@@ -22,25 +22,19 @@ const Navbar = (props: Props) => {
                             variant: 'ghost',
                             size: 'sm'
                         })}>
-                            Dashboard
-                        </Link>
-                        <Link href={"/pricing"} className={buttonVariants({
-                            variant: 'ghost',
-                            size: 'sm'
-                        })}>
-                            Pricing
-                        </Link>
+                            dashboard   
+                        </Link> 
                         <LoginLink className={buttonVariants({
                             variant: 'ghost',
                             size: 'sm'
                         })}>
-                            Sign in
+                            sign in
                         </LoginLink>
                         <RegisterLink className={buttonVariants({
                             variant: 'ghost',
                             size: 'sm'
                         })}>
-                            Get Started
+                            get started
                             <ArrowRight className='ml-1.5 h-5'/>
                         </RegisterLink>
                     </> 

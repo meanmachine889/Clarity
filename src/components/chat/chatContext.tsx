@@ -102,87 +102,80 @@ export const ChatContextProvider = ({ fileId, children }: Props) => {
     onSuccess: async (stream) => {
       setIsLoading(false);
       if (!stream) {
-        return toast({
-          title: "Something went wrong",
-          description: "Please try again later",
-          variant: "destructive",
-        });
+        alert("No response from the server");
       }
-
-      const reader = stream.getReader();
+    
+      const reader = stream?.getReader();
       const decoder = new TextDecoder();
       let done = false;
-
       let accResponse = "";
-
+    
       while (!done) {
-        const { value, done: isDone } = await reader.read();
-
+        const { value, done: isDone } = await reader!.read();
+    
         if (value) {
           accResponse += decoder.decode(value, { stream: !isDone });
         }
-
+    
         done = isDone;
-
-        utils.getFileMessages.setInfiniteData({
-          fileId,
-          limit: 10,
-        }, 
-
-        (OldData) => {
-            if(!OldData){
-                return {pages: [], pageParams: []}
-            }
-
-            let isAiReponseCreated = OldData.pages.some((page) => page.messages.some((message) => message.id === 'ai-response'))
-
-            let updatesPages = OldData.pages.map((page) => {
-                if(page === OldData.pages[0]){
-                    let updatedMessages
-
-                    if(!isAiReponseCreated){
-                        updatedMessages = [
-                            {
-                                createdAt: new Date().toISOString(),
-                                id: 'ai-response',
-                                isUserMessage: false,
-                                text: accResponse,
-                            },
-                            ...page.messages,
-                        ]
-                    }
-
-                    else{
-                        updatedMessages = page.messages.map((message) => {
-                            if(message.id === 'ai-response'){
-                                return {
-                                    ...message,
-                                    text: accResponse,
-                                }
-                            }
-
-                            return message
-                        })
-                    }
-
-                    return {
-                        ...page,
-                        messages: updatedMessages
-                    }
-                }
-
-                return page
-            })
-
-            return {
-                ...OldData,
-                pages: updatesPages
-            }
-        }
-
-        );
       }
+    
+      // Final update after the complete response is received
+      utils.getFileMessages.setInfiniteData(
+        { fileId, limit: 10 },
+        (oldData) => {
+          if (!oldData) {
+            return { pages: [], pageParams: [] };
+          }
+    
+          let isAiResponseCreated = oldData.pages.some((page) =>
+            page.messages.some((message) => message.id === "ai-response")
+          );
+    
+          let updatedPages = oldData.pages.map((page) => {
+            if (page === oldData.pages[0]) {
+              let updatedMessages;
+    
+              if (!isAiResponseCreated) {
+                updatedMessages = [
+                  {
+                    createdAt: new Date().toISOString(),
+                    id: "ai-response",
+                    isUserMessage: false,
+                    text: accResponse,
+                  },
+                  ...page.messages,
+                ];
+              } else {
+                updatedMessages = page.messages.map((message) => {
+                  if (message.id === "ai-response") {
+                    return {
+                      ...message,
+                      text: accResponse,
+                    };
+                  }
+                  return message;
+                });
+              }
+    
+              return {
+                ...page,
+                messages: updatedMessages,
+              };
+            }
+    
+            return page;
+          });
+    
+          return {
+            ...oldData,
+            pages: updatedPages,
+          };
+        }
+      );
     },
+    
+    
 
     onError: (_, __, context) => {
       setMessage(backUpMessage.current);

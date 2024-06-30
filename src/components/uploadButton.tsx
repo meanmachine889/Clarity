@@ -90,7 +90,7 @@ const UploadDropZone = () =>{
                             <GhostIcon className='h-6 w-6 text-orange-400 animate-bounce'/>
                             <p className='text-sm mb-2 mt-2'>
                                 <span className='font-semibold'>
-                                    Click to Upload{' '}
+                                    click to upload{' '}
                                 </span>
                                 or drag and drop
                             </p>
@@ -140,7 +140,7 @@ const UploadButton = (props: Props) => {
         }
     }}>
         <DialogTrigger asChild>
-            <Button onClick={() => setOPen(true)}>Upload PDF</Button>
+            <Button onClick={() => setOPen(true)}>upload</Button>
         </DialogTrigger>
         <DialogContent>
             <UploadDropZone/>

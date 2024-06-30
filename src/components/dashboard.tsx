@@ -46,7 +46,7 @@ const Dashboard = () => {
   return (
     <main className="mx-auto max-w-7xl md:p-10 px-2">
       <div className="mt-8 flex flex-col items-start justify-between gap-4 border-b border-gray-800 sm:flex-row pb-5 sm:items-center sm:gap-0">
-        <h1 className="mb-3 font-bold text-5xl text-gray-200">Files</h1>
+        <h1 className="mb-3 font-bold text-5xl text-gray-200">files</h1>
         <UploadButton />
       </div>
       <div>
@@ -55,7 +55,7 @@ const Dashboard = () => {
             <Loader2 className="my-2 min-h-10 min-w-10 animate-spin" />
           </div>
         ) : files && files.length ? (
-          <ul className="mt-8 grid-cols-1 gap-6 divide-y divide-gray-900 md:grid-cols-2 lg:grid-cols-3">
+          <ul className="mt-8 grid-cols-1 grid gap-6 divide-y divide-gray-900 md:grid-cols-2 lg:grid-cols-3">
             {files
               .sort(
                 (a, b) =>
@@ -65,7 +65,7 @@ const Dashboard = () => {
               .map((file) => (
                 <li
                   key={file.id}
-                  className="col-span-1 divide-y divide-black rounded-lg bg-gray-900 shadow mb-4 transition hover:shadow-lg"
+                  className="col-span-1 divide-y divide-black rounded-lg bg-zinc-900 shadow mb-4 transition hover:shadow-lg"
                 >
                   <Link
                     href={`/dashboard/${file.id}`}
@@ -111,8 +111,8 @@ const Dashboard = () => {
         ) : (
           <div className="mt-16 flex flex-col items-center gap-2">
             <Ghost className="h-8 w-8 text-orange-400" />
-            <h3 className="font-semibold text-xl">Looks quite empty</h3>
-            <p>Let&apos;s upload your first pdf</p>
+            <h3 className="font-semibold text-xl">looks quite empty</h3>
+            <p>let&apos;s upload your first pdf</p>
           </div>
         )}
       </div>
