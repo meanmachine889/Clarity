@@ -12,7 +12,7 @@ const Providers = ({children} : PropsWithChildren) => {
   const [trpcClient] = useState(() => trpc.createClient({
     links: [
       httpBatchLink({
-        url: 'https://clarity-72dtkcgbd-furiyashs-projects.vercel.app/api/trpc'
+        url: 'https://clarity-beige.vercel.app/api/trpc'
       }),
     ],
   })
