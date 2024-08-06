@@ -1,5 +1,4 @@
-"use client"
-
+"use client";
 
 import MaxwidthWrapper from "@/components/maxWidthWrapper";
 import Image from "next/image";
@@ -11,24 +10,25 @@ import { Button, buttonVariants } from "@/components/ui/button";
 import { ContainerScroll } from "../components/ui/container-scroll-animation";
 import { GoogleGeminiEffect } from "@/components/ui/google-gemini-effect";
 import { HeroHighlightDemo } from "@/components/HighlightText";
+import { LoginLink } from '@kinde-oss/kinde-auth-nextjs/server'
 
 export default function Home() {
-
   return (
     <div className="dark:bg-black flex flex-col bg-white  dark:bg-dot-white/[0.1] bg-dot-black/[0.2] scrollbar-w-2 scrollbar-track-orange-lighter scrollbar-thumb-orange scrollbar-thumb-rounded">
       <div className="flex flex-col justify-center items-center overflow-hidden">
-        <HeroHighlightDemo/>
+        <HeroHighlightDemo />
       </div>
-      <MaxwidthWrapper className="flex -mt-7 cursor-pointer mb-9 flex-col justify-center items-center text-center">
-        <Link
-          href="/dashboard"
-          className="flex items-center justify-center group md:px-9 md:py-4 md:text-xltext-lg py-3 px-7 font-semibold text-white bg-zinc-500 rounded-lg hover:bg-orange-600 focus:outline-none focus-visible:ring-2 focus-visible:ring-orange-500 focus-visible:ring-opacity-75"
-          target="_blank"
+      {/* <MaxwidthWrapper className="flex -mt-7 cursor-pointer mb-9 flex-col justify-center items-center text-center">
+      <LoginLink
+          className={buttonVariants({
+            variant: "ghost",
+            size: "sm",
+          })}
         >
-          let&apos;s go
-        </Link>
-      </MaxwidthWrapper>
-      <div className="mx-auto mb-32 max-w-5xl sm:mt-56">
+          sign in
+        </LoginLink>
+      </MaxwidthWrapper> */}
+      <div className="mx-auto mb-32 max-w-5xl">
         <div className="mt-5 p-3 lg:px-8">
           <div className="mx-auto max-w-2xl sm:text-center">
             <h2 className="mt-9 font-bold text-2xl text-gray-200 sm:text-5xl">
@@ -45,9 +45,7 @@ export default function Home() {
               <span className="text-xl font-semibold">
                 sign up for an account
               </span>
-              <span className="text-zinc-400">
-                sign up using you email
-              </span>
+              <span className="text-zinc-400">sign up using you email</span>
             </div>
           </li>
           <li className="md:flex-1">
@@ -91,13 +89,11 @@ export default function Home() {
           </div>
 
           <div className="flex justify-center items-center mt-9">
-            <p className="font-bold text-2xl text-gray-200 sm:text-5xl">and that&apos;s it! enjoy!</p>
+            <p className="font-bold text-2xl text-gray-200 sm:text-5xl">
+              and that&apos;s it! enjoy!
+            </p>
           </div>
         </div>
-      </div>
-      <div className="flex max-w-xl self-center flex-row gap-3 bg-zinc-900 shadow-xl justify-around items-center mx-3 p-3 rounded-xl mb-4">
-      <p className="font-bold text-xl text-gray-200 md:text-2xl">wanna connect ?</p>
-        <Link href="https://www.linkedin.com/in/yash-bharadwaj-47871b251/" className="rounded-2xl bg-black p-2"> <LinkedinIcon className="h-4 w-4 text-gray-300"/></Link>
       </div>
     </div>
   );

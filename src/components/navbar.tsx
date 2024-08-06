@@ -12,18 +12,12 @@ const Navbar = (props: Props) => {
     <nav className='sticky h-14 inset-x-0 top-0 z-30 w-full border-b bg-opacity-70 border-gray-900 bg-black/75 backdrop-blur-lg transition-all'>
         <MaxwidthWrapper className="">
             <div className='flex h-14 items-center justify-between border-b border-gray-900'>
-                <Link href={'/'} className='flex items-center gap-2 z-40 font-semibold'>
+                <Link href={'/'} className=' items-center gap-2 md:flex hidden z-40 font-semibold'>
                     <GhostIcon className='h-7 w-7 mt-1'/>
                     <span className="text-3xl font-bold">clarity</span>
                 </Link>
-                <div className='hidden items-center space-x-4 sm:flex'>
+                <div className=' items-center space-x-4 flex'>
                     <>
-                        <Link href={"/dashboard"} className={buttonVariants({
-                            variant: 'ghost',
-                            size: 'sm'
-                        })}>
-                            dashboard   
-                        </Link> 
                         <LoginLink className={buttonVariants({
                             variant: 'ghost',
                             size: 'sm'
